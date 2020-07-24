@@ -1,0 +1,1 @@
+document.querySelector('.go-left').innerHTML = '<';
