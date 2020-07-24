@@ -1,0 +1,48 @@
+.showcase{
+    height: 50vh;
+    max-height: 50vh;
+}
+
+.showcase-direction{
+    font-size: 4rem;
+    cursor: pointer;
+    opacity: 0.2;
+}
+
+.showcase:hover .showcase-direction{
+    opacity: 1;
+    transition: opacity 300ms;
+}
+
+/* ---- */
+
+.best-sell{
+    padding: 3vw;
+}
+
+.item-box{
+    width: 32%;
+    height: 35vh;
+    border: 1.5px solid black;
+    padding: 0.5px;
+    text-align: center;
+}
+
+.item-image{
+    background-color: white;
+    width: 100%;
+    height: 80%;
+    z-index: -1;
+}
+
+.item-price{
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.55rem;
+}
+
+footer{
+    width: 100%;
+    height: 10vh;
+    padding: 3%;
+}
