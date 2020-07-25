@@ -1,6 +1,6 @@
 Usuarios
 
-id_user(primary) 	int(sin establecer el tamaño)
+id_user(primary) 	int(sin establecer el tamaï¿½o)
 nombre		varchar(40)
 username		varchar(40)
 password		varchar(40)
@@ -11,7 +11,7 @@ cookie		varchar(40)
 
 Carritos
 
-id_carro(primary)	int(sin establecer el tamaño)
+id_carro(primary)	int(sin establecer el tamaï¿½o)
 user_id		campo clave de Usuarios
 items		JSON
 Subtotal		int(10)
@@ -20,7 +20,7 @@ Subtotal		int(10)
 
 Items
 
-id_item(primary)	int(sin establecer el tamaño)
+id_item(primary)	int(sin establecer el tamaï¿½o)
 nombre_producto	varchar(40)
 desc_producto	varchar(40)
 precio_unidad	int(10)
@@ -32,7 +32,7 @@ stock_max	int(10)
 
 Facturas
 
-id_bill(primary)	int(sin establecer el tamaño)
+id_bill(primary)	int(sin establecer el tamaï¿½o)
 carrito		campo clave de carrito
 sub_total		int(10)
 total		int(10)
