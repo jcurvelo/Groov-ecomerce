@@ -27,6 +27,7 @@ precio_unidad	int(10)
 stock_cur		int(10)
 stock_min		int(10)
 stock_max	int(10)
+img_url varchar(100)
 
 -----------------------------------------------------
 
