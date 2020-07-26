@@ -1,6 +1,11 @@
 :root{
     --carousel-image: url('none');
 }
+
+.logo{
+    height: 5vh;
+}
+
 .showcase{
     background-color: lightblue;
     z-index: -3;
