@@ -3,15 +3,9 @@ document.querySelector('.go-left').innerHTML = '<';
 let root = document.documentElement;
 let counter = 0;
 
-// fetch('./useful-data.json')
-// .then(response => response.json())
-// .then((data)=>{
-//     setInterval(() => {
-//         counter++
-//     }, 2000);
-//     root.style.setProperty('--carousel-image',`url("${data.imgForCarousel[2]}")`);
-// })
-
+function checkValidation(form){
+    form.submit();
+}
 
 
 // 
@@ -30,10 +24,7 @@ Vue.component('item-box',{
 
 new Vue({
     el: '#best-sell',
-    data: {
-        hola: 'Howaaa',
-        items:[1,2,3,4,5,6,7]
-    }
+    
 });
 
 
