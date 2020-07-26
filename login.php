@@ -3,4 +3,8 @@
 // Archivo login
 
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = crypt($_POST['password'],'sha');
+
+
+
+echo $username.' '.$password;

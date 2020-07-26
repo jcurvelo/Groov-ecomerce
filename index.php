@@ -1,16 +1,20 @@
-<?
+<?php
 
+// echo __DIR__.'\index.html';
 $requests = $_SERVER['REQUEST_URI'];
+$cpath = "/groovecomerce";
 
 switch($requests){
-    case '/':
-        require __DIR__.'/index.html';
+    case $cpath.'/':
+        header('Location: '.$cpath.'/index.html');
+        die();
         break;
-    case '/login':
-        require __DIR__.'/login.html';
+    case $cpath.'/login':
+        header('Location: '.$cpath.'/login.html');
+        die();
         break;
     default:
-        http_response_code(404);
-        require __DIR__.'/404.html';
+        header('Location: '.$cpath.'/Page_not_found.html');
+        die();
         break;
 }
