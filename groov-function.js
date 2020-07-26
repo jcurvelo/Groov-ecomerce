@@ -8,7 +8,8 @@ function checkValidation(form){
 }
 
 
-// 
+//
+
 Vue.component('item-box',{
     props:['product_name','product_price'],
     template: `
@@ -22,13 +23,12 @@ Vue.component('item-box',{
     `
 })
 
-// new Vue({
-//     el: '#best-sell'
-// });
+const bestSell = new Vue({
+    el: '#best-sell'
+});
 
 
-
-
+//
 Vue.component('topbar',{
     template:`
     <nav class="navbar bg-secondary d-flex justify-contnet-between">
@@ -36,8 +36,8 @@ Vue.component('topbar',{
             <img src="./img/logo.png" alt="logo-groov" class="logo">
         </a>
         <div class="navbar-options d-flex justify-contnet-between p-1">
-            <a href="#" class="text-white m-2">Login</a>
-            <a href="#" class="text-white m-2">Register</a>
+            <a href="login.html" class="text-white m-2">Login</a>
+            <a href="register.html" class="text-white m-2">Register</a>
         </div>
     </nav>
     `
@@ -49,7 +49,7 @@ Vue.component('test',{
 
 
 
-const app = new Vue({
+const topBar = new Vue({
     el: '#topbar',
     data:{
         hola: 'hola'
