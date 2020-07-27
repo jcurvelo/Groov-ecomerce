@@ -25,17 +25,14 @@
         </div>
     </div>
     <div class="container">
-        <div id="best-sell" class="best-sell bg-warning d-flex justify-content-between flex-wrap">
-            <item-box v-for="item in items" product_name="Camisa" product_price="10"></item-box>
-        </div>
-    </div>
-    <!-- Carrito -->
-    <div class="container">
+        <!-- SOLO BEST-SELLING ES CLASE ORIGINAL, EL RESTO ES DE BOOTSTRAP -->
         <div id="best-selling" class="best-sell bg-warning d-flex justify-content-between flex-wrap">
-            <item-box product_name="Camisa" product_price="10" v-for="item in items"></item-box>
+            <!-- OBJETO VUE PARA LOS ITEMS -->
+            <item-box v-for="item in items" product_img="vue.item" product_name="Camisa" product_price="10" v-for="item in items"></item-box>
+            <!-- OBJETO VUE PARA LOS ITEMS -->
         </div>
     </div>
-    <!-- Fin del carrito xd -->
+    <!-- FALTA AGREGAR MÁS CONTENIDO EN EL FOOTER -->
     <footer class="bg-dark text-white">
         All rights reserved
     </footer>
