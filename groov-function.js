@@ -20,6 +20,7 @@ function checkValidation(form){
 //
 let itemsArr = getData();
 console.log(itemsArr)
+
 Vue.component('item-box',{
     props:['product_name','product_price','product_img'],
     template: `
@@ -29,6 +30,7 @@ Vue.component('item-box',{
         </div>
         <div class="item-name">{{ product_name }}</div>
         <div class="item-price">{{ product_price }}$</div>
+        <div class="button"><button>Agregar al carrito</button</div>
     </div>    
     `
 })
@@ -72,7 +74,28 @@ Vue.component('topbar',{
     `
 });
 
+//Componente nuevo para el carrito
+Vue.component('item-box',{
+    props:['product_name','product_price'],
+    template: `
+    <div class="item-box mt-4">
+        <div class="item-image">
+            <!-- <img src="" alt=""> -->
+        </div>
+        <div class="item-name">{{ product_name }}</div>
+        <div class="item-price">{{ product_price }}$</div>
+        <div class="button"><button>Eliminar del carrito</button</div>
+    </div>    
+    `
+})
 
+new Vue({
+    el: '#best-selling',
+    data: {
+        hola: 'Holaa',
+        items:[1,2,3,4,5,6,7]
+    }
+});
 
 const topBar = new Vue({
     el: '#topbar',
@@ -81,3 +104,4 @@ const topBar = new Vue({
         ok: true
     }
 })
+
