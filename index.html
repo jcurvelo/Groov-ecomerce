@@ -28,7 +28,7 @@
         <!-- SOLO BEST-SELLING ES CLASE ORIGINAL, EL RESTO ES DE BOOTSTRAP -->
         <div id="best-selling" class="best-sell bg-warning d-flex justify-content-between flex-wrap">
             <!-- OBJETO VUE PARA LOS ITEMS -->
-            <item-box v-for="item in items" product_img="vue.item" product_name="Camisa" product_price="10" v-for="item in items"></item-box>
+            <item-box v-for="(item, key) in items" :product_img="item" product_name="Oferta" :product_price="price[key]" v-for="item in items"></item-box>
             <!-- OBJETO VUE PARA LOS ITEMS -->
         </div>
     </div>

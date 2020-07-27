@@ -1,9 +1,18 @@
+//VARIABLES E INICIALIZACIONES NECESARIAS
+let itemsRopa;
+let price = [];
+
+for(let i=0;i<9;i++){
+    price[i] = Math.floor(Math.random() * 50) + 10;
+}
+
 //AREA DE COOKIES Y SESIONES
 const queryString = window.location.search;
 let hasCookie = document.cookie;
 let cookieSplit;
 let cookieName = 0;
-let itemsRopa;
+
+
 
 if(queryString == '?err=1'){
     alert('Usuario o clave inválido')
@@ -87,7 +96,8 @@ new Vue({
             "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSigTsrn9COIn7p5QnBT0IlQ1AFMFNgMvx1xw&usqp=CAU",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxL3sbX2AvpC4w-Z5cgFxI7Nu7jbfIPiEqbw&usqp=CAU",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTxdZJTNCzuAEY4YyBcGls87M27LdTrqCH_oQ&usqp=CAU",
-        ]
+        ],
+        price: price
     }
 });
 
