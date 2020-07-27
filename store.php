@@ -1,5 +1,5 @@
 <?php
-
+    require './connection.php'
 ?>
 
 <!DOCTYPE html>
@@ -19,15 +19,24 @@
     <div v-if="ok" id="topbar" class="topbar">
         <topbar></topbar>
     </div>
-    <div id="itemsDisplay" class="container">
-        <item-box product_name="Camisa" product_price="10"></item-box>
+    <div id="itemsDisplay" class="container d-flex justify-content-around flex-wrap">
+        <?php
+            $sql = "SELECT * FROM items";
+            $result = $conn->query($sql);
+            while($row = $result->fetch_assoc()){
+                echo '<item-box product_img="'.$row['img_url'].'" product_name="'.$row['nombre_producto'].'" product_price="'.$row['precio_unidad'].'"></item-box>';
+            }
+        ?>
+        
     </div>
     <script src="groov-function.js"></script>
     <script>
-
+        
         const itemsDisplay = new Vue({
             el: '#itemsDisplay',
-            // data: getData()
+            data:{
+                items: [1,2,3,4,5]
+            }
         });
 
     </script>

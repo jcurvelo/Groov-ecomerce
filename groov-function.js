@@ -18,13 +18,14 @@ function checkValidation(form){
 }
 
 //
-
+let itemsArr = getData();
+console.log(itemsArr)
 Vue.component('item-box',{
-    props:['product_name','product_price'],
+    props:['product_name','product_price','product_img'],
     template: `
     <div class="item-box mt-4">
         <div class="item-image">
-            <!-- <img src="" alt=""> -->
+            <img :src="product_img" :alt="product_img">
         </div>
         <div class="item-name">{{ product_name }}</div>
         <div class="item-price">{{ product_price }}$</div>
