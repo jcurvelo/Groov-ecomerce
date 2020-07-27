@@ -1,12 +1,21 @@
 // document.querySelector('.go-left').innerHTML = '<';
 
-let root = document.documentElement;
-let counter = 0;
+async function getData(){
+    let api = await fetch('GroovAPI.php');
+    let data = await api.json();
+    return data;
+}
+
+
+const queryString = window.location.search;
+
+if(queryString == '?err=1'){
+    alert('Usuario o clave inválido')
+}
 
 function checkValidation(form){
     form.submit();
 }
-
 
 //
 
@@ -23,35 +32,51 @@ Vue.component('item-box',{
     `
 })
 
-const bestSell = new Vue({
-    el: '#best-sell'
-});
-
-
 //
+let hasCookie = document.cookie;
+let cookieSplit;
+let cookieName;
+if(hasCookie){
+    cookieSplit = hasCookie.split('=');
+    cookieName = cookieSplit[1].split(';')
+}
+
+
 Vue.component('topbar',{
+    data:function(){
+        return{
+            isLogged: hasCookie,
+            username: cookieName[0],
+            isHidden: true
+        }
+    },
     template:`
     <nav class="navbar bg-secondary d-flex justify-contnet-between">
         <a href="./index.html" class="navbar-brand text-white">
             <img src="./img/logo.png" alt="logo-groov" class="logo">
         </a>
-        <div class="navbar-options d-flex justify-contnet-between p-1">
-            <a href="login.html" class="text-white m-2">Login</a>
-            <a href="register.html" class="text-white m-2">Register</a>
+        <div v-if="isLogged" class="navbar-options d-flex flex-column p-1">
+            <span v-on:click="isHidden = !isHidden" id="userMenuBtn">{{ username }}</span>
+            <div class="userMenu bg-light flex-column" :class="{'d-none': isHidden}">
+                <a href="#">Carrito</a>
+                <a href="#">Configuración</a>
+                <a href="logout.php">Salir</a>
+            </div>
+        </div>
+        <div v-else class="navbar-options d-flex justify-contnet-between p-1">
+            <a href="login.html" class="text-white m-2">Ingresar</a>
+            <a href="register.html" class="text-white m-2">Registrarse</a>
         </div>
     </nav>
     `
 });
-
-Vue.component('test',{
-    template:'<p>PRUEBAAA</p>'
-})
 
 
 
 const topBar = new Vue({
     el: '#topbar',
     data:{
-        hola: 'hola'
+        hola: 'hola',
+        ok: true
     }
 })
