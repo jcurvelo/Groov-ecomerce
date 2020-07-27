@@ -132,3 +132,39 @@ footer{
     height: 10vh;
     padding: 3%;
 }
+
+/* ---CARRITO */
+
+.articulo-box{
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 20vh;
+    border: 1px solid #8080808c;
+    overflow: hidden;
+}
+
+.articulo-img{
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.articulo-img img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.quitar-articulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.quitar-articulo:hover{
+    background-color: lightgray;
+}
