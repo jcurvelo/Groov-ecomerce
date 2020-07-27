@@ -36,16 +36,14 @@ Vue.component('item-box',{
     //Hay clases de bootstrap dentro del template
     template: `
     <div class="item-box mt-4">
-        <div class="contenido">
-            <div class="item-image">
-                <img :src="product_img" :alt="product_img">
-            </div>
-            <div class="item-name">{{ product_name }}</div>
-            <div class="item-price">{{ product_price }}$</div>
-            <div class="button">
-                <button>Agregar al carrito</button>
-            </div>
-        </div>        
+        <div class="item-image">
+            <img :src="product_img" :alt="product_img">
+        </div>
+        <div class="item-name">{{ product_name }}</div>
+        <div class="item-price">{{ product_price }}$</div>
+        <div class="button">
+            <button>Agregar al carrito</button>
+        </div>
     </div>    
     `
 })
