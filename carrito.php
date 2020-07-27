@@ -18,8 +18,22 @@
     <div v-if="ok" id="topbar" class="topbar">
         <topbar></topbar>
     </div>
-    <div id="articulo-container" class="container d-flex justify-content-center">
-        <articulo articulo_precio="10" articulo_nombre="pantalon" articulo_img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQteoFsKbgX3ehNl72GW7bORndrnSPoCM1PVw&usqp=CAU"></articulo>
+    <div id="articulo-container" class="container d-flex justify-content-center flex-column">
+        <?php
+            $galletas = $_COOKIE['articulos'];
+            $idArticulo = explode(',',$galletas);
+            foreach ($idArticulo as $ar) {
+                $sql = "SELECT * FROM items WHERE id_item='$ar'";
+                $result = $conn->query($sql);
+                if(!$result){
+                    echo 'Error '.$conn->error;
+                }else{
+                    while($row = $result->fetch_assoc()){
+                        echo '<articulo articulo_precio="'.$row['precio_unidad'].'" articulo_nombre="'.$row['nombre_producto'].'" articulo_img="'.$row['img_url'].'"></articulo>';
+                    }
+                }
+            }
+        ?>
     </div>
     <hr>
     <div class="container">

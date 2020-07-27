@@ -1,6 +1,7 @@
 //VARIABLES E INICIALIZACIONES NECESARIAS
 let itemsRopa;
 let price = [];
+let articulos_en_carrito = [];
 
 for(let i=0;i<9;i++){
     price[i] = Math.floor(Math.random() * 50) + 10;
@@ -32,8 +33,16 @@ if(hasCookie){
 // 
 //CREACIÓN DE COMPONENTES VUE
 Vue.component('item-box',{
-    props:['product_name','product_price','product_img'],
+    props:['product_name','product_price','product_img','product_id'],
     //Hay clases de bootstrap dentro del template
+    data: function(){
+        return{
+                item_id:function idArticulo(id){
+                    articulos_en_carrito.push(id);
+                    document.cookie = `articulos=${articulos_en_carrito}`;
+                }
+        }
+    },
     template: `
     <div class="item-box mt-4">
         <div class="item-image">
@@ -41,9 +50,8 @@ Vue.component('item-box',{
         </div>
         <div class="item-name">{{ product_name }}</div>
         <div class="item-price">{{ product_price }}$</div>
-        <div class="button">
-            <button>Agregar al carrito</button>
-        </div>
+        <button v-on:click="item_id(product_id)">Agregar al carrito</button>
+ 
     </div>    
     `
 })
