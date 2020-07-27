@@ -79,17 +79,31 @@
     padding: 3vw;
 }
 /* Fin del carrito */
+/*Botones de los items*/
+div.item-box div.button-texture, div.button{
+    visibility: hidden;
+}
+
+div.item-box:hover div.button-texture{
+    visibility: visible;
+}
+
+div.item-box:hover div.button{
+    visibility: visible;
+}
 
 .item-box{
     width: 32%;
-    height: 38vh;
-    border: 1.5px solid black;
+    height: 36vh; 
     padding: 0.5px;
     text-align: center;
-    background-color:rgb(236, 233, 43);
+    background-color:rgb(222, 223, 222);
 }
-
-.item-image{
+div.contenido {
+    width: 100%;
+    height: 100%;
+}
+div.item-box div.contenido div.item-image{
     background-color: white;
     width: 100%;
     height: 60%;
@@ -99,7 +113,7 @@
 .item-price{
     width: 100%;
     font-weight: bold;
-    font-size: 1.55rem;
+    font-size: 1rem;
 }
 
 footer{
