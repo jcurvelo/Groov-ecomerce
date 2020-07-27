@@ -1,6 +1,31 @@
 :root{
     --carousel-image: url('none');
 }
+
+.logo{
+    height: 5vh;
+}
+
+.navbar-options{
+    position: relative;
+}
+
+#userMenuBtn{
+    color: white;
+    cursor: pointer;
+}
+#userMenuBtn:hover{
+    text-decoration-line: underline;
+}
+
+.userMenu{
+    display: flex;
+    padding: 1vw;
+    top: 100%;
+    right: 20%;
+    position: absolute;
+}
+
 .showcase{
     background-color: lightblue;
     z-index: -3;

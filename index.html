@@ -12,10 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 <body>
-    <div class="topbar">
-        <nav class="navbar bg-primary">
-            <a href="#" class="navbar-brand text-white">Groov</a>
-        </nav>
+    <div id="topbar" class="topbar">
+        <topbar></topbar>
     </div>
     <div class="container-fluid">
         <div class="showcase text-white d-flex justify-content-between align-items-center">
@@ -28,7 +26,7 @@
     </div>
     <div class="container">
         <div id="best-sell" class="best-sell bg-warning d-flex justify-content-between flex-wrap">
-            <item-box product_name="Camisa" product_price="10" v-for="item in items"></item-box>
+            <item-box v-for="item in items" product_name="Camisa" product_price="10"></item-box>
         </div>
     </div>
     <!-- Carrito -->
