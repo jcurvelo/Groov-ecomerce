@@ -25,17 +25,18 @@
         <?php
             $session = $_COOKIE['PHPSESSID'];
             $buscarCarritoSQL = "SELECT * FROM carritos WHERE `session_id`='$session'";
-
+            $precioTotal = 0;
             $result = $conn->query($buscarCarritoSQL);
 
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
-
+                   
                     $idItem = $row['id_item'];
                     $buscarItemSQL = "SELECT * FROM items WHERE id_item='$idItem'";
                     $itemResult = $conn->query($buscarItemSQL);
                     
                     while($itemRow = $itemResult->fetch_assoc()){
+                        $precioTotal += $itemRow['precio_unidad']; 
                         echo '<articulo id_item="'.$itemRow['id_item'].'" articulo_precio="'.$itemRow['precio_unidad'].'" articulo_nombre="'.$itemRow['nombre_producto'].'" articulo_img="'.$itemRow['img_url'].'"></articulo>';
                     }
                 }
@@ -44,9 +45,19 @@
     </div>
     <hr>
     <div class="container">
-        <span>Total a pagar: </span>
-        <form action="/pagar" method="post">
-            <button class="btn btn-success" type="button">Pagar</button>
+        <?php
+        echo '<span>Total a pagar: '.$precioTotal.'$</span>';
+        ?>
+        <form action="../pagar.php" method="post">
+            <?php
+                $idUser = $_SESSION['id_user'];
+                echo '
+                <input name="id_user" value="'.$idUser.'" class="d-none">
+                <input name="session_id" value="'.$session.'" class="d-none">
+                <input name="precioTotal" value="'.$precioTotal.'" class="d-none">
+                ';
+            ?>
+            <input class="btn btn-success" type="submit" value="Pagar"></input>
         </form>
     </div>
     <script src="groov-function.js"></script>

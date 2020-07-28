@@ -13,5 +13,5 @@ $insetSql = "INSERT INTO usuarios (nombre, apellido, email, username, password) 
 if(!$conn->query($insetSql)){
     die('Error al ingresar '.$conn->error);
 }else{
-    header('Location: login.html');
+    header('Location: public/login.html');
 }

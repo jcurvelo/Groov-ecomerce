@@ -34,14 +34,14 @@ if(hasCookie){
 // 
 //CREACIÓN DE COMPONENTES VUE
 Vue.component('item-box',{
-    props:['product_name','product_price','product_img','product_id','session', 'acccion'],
+    props:['product_name','product_price','product_img','product_id','user_session', 'acccion'],
     //Hay clases de bootstrap dentro del template
     data: function(){
         return{
                 agregar:function idArticulo(form){
                     form.submit
                 },
-                session: this.session
+                session: this.user_session
         }
     },
     template: `

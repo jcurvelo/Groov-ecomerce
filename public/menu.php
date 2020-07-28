@@ -1,11 +1,5 @@
 <?php
-session_start();
 require '../connection.php';
-$saveSession = $_COOKIE['PHPSESSID'];
-$idUser = $_SESSION['id_user'];
-$isSessionSet = isset($idUser);
-$conn->query("UPDATE usuarios SET `session`='$saveSession' WHERE `id_user`='$idUser'");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

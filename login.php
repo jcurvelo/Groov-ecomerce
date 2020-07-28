@@ -1,11 +1,10 @@
 <?php
-session_start();
 require './connection.php';
 
 $username = $_POST['username'];
 $password = crypt($_POST['password'],'sha');
 
-$loginSQL = "SELECT * FROM usuarios WHERE username='$username' AND password='$password'";
+$loginSQL = "SELECT * FROM usuarios WHERE `username`='$username' AND `password`='$password'";
 
 $result = $conn->query($loginSQL);
 
@@ -15,6 +14,7 @@ if(!$result){
 
 if($result->num_rows > 0){
     while($row = $result->fetch_assoc()){
+        session_start();
         $_SESSION['activo'] = 1;
         $_SESSION['id_user'] = $row['id_user'];
         $_SESSION['nombre'] = $row['nombre'];
@@ -31,5 +31,5 @@ if($result->num_rows > 0){
     }
     
 }else{
-    header('Location: login.html?err=1');
+    header('Location: public/login.html?err=1');
 }

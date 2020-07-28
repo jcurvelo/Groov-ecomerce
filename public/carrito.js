@@ -28,3 +28,4 @@ Vue.component('articulo',{
 const aritucloContainer = new Vue({
     el: '#articulo-container'
 });
+

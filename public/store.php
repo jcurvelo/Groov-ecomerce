@@ -1,6 +1,10 @@
 <?php
     session_start();
     require '../connection.php';
+
+    $idUser = $_SESSION['id_user'];
+    $saveSession = $_COOKIE['PHPSESSID'];
+    $conn->query("UPDATE usuarios SET `session`='$saveSession' WHERE `id_user`='$idUser'");
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +31,7 @@
             $sql = "SELECT * FROM items";
             $result = $conn->query($sql);
             while($row = $result->fetch_assoc()){
-                echo '<item-box session="'.isset($_COOKIE['PHPSESSID']).'" product_id="'.$row['id_item'].'" product_img="'.$row['img_url'].'" product_name="'.$row['nombre_producto'].'" product_price="'.$row['precio_unidad'].'"></item-box>';
+                echo '<item-box user_session="'.isset($_COOKIE['PHPSESSID']).'" product_id="'.$row['id_item'].'" product_img="'.$row['img_url'].'" product_name="'.$row['nombre_producto'].'" product_price="'.$row['precio_unidad'].'"></item-box>';
             }
         ?>
         

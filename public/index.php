@@ -1,3 +1,9 @@
+<?php
+session_unset();
+session_destroy();
+setcookie('PHPSESSID','',-3600);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
