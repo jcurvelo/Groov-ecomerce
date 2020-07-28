@@ -34,14 +34,14 @@ if(hasCookie){
 // 
 //CREACIÓN DE COMPONENTES VUE
 Vue.component('item-box',{
-    props:['product_name','product_price','product_img','product_id'],
+    props:['product_name','product_price','product_img','product_id','session', 'acccion'],
     //Hay clases de bootstrap dentro del template
     data: function(){
         return{
-                item_id:function idArticulo(id){
-                    articulos_en_carrito.push(id);
-                    document.cookie = `articulos=${articulos_en_carrito}`;
-                }
+                agregar:function idArticulo(form){
+                    form.submit
+                },
+                session: this.session
         }
     },
     template: `
@@ -52,7 +52,12 @@ Vue.component('item-box',{
             </div>
             <div class="item-name">{{ product_name }}</div>
             <div class="item-price">{{ product_price }}$</div>
-            <div class="button"><button v-on:click="item_id(product_id)">Agregar al carrito</button></div>
+            <div v-if="session" class="button">
+                <form action="../compra.php" method="POST">
+                    <input name="producto" :value="product_id" class="d-none"></input>
+                    <button v-on:click="agregar(this.form)">Agregar al carrito</button>
+                </form>
+            </div>
         </div>
     </div>    
     `
@@ -88,6 +93,7 @@ Vue.component('topbar',{
         <span v-on:click="isHidden = !isHidden" id="userMenuBtn">{{ username }}</span>
             <div class="userMenu bg-light flex-column" :class="{'d-none': isHidden}">
                 <a href="store.php">Tienda</a>
+                <a href="carrito.php">Carrito</a>
                 <a v-if="isAdmin()" href="menu.php">Menu</a>
                 <a href="../logout.php">Salir</a>
             </div>

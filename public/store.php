@@ -27,7 +27,7 @@
             $sql = "SELECT * FROM items";
             $result = $conn->query($sql);
             while($row = $result->fetch_assoc()){
-                echo '<item-box product_id="'.$row['id_item'].'" product_img="'.$row['img_url'].'" product_name="'.$row['nombre_producto'].'" product_price="'.$row['precio_unidad'].'"></item-box>';
+                echo '<item-box session="'.isset($_COOKIE['PHPSESSID']).'" product_id="'.$row['id_item'].'" product_img="'.$row['img_url'].'" product_name="'.$row['nombre_producto'].'" product_price="'.$row['precio_unidad'].'"></item-box>';
             }
         ?>
         

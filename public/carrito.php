@@ -23,24 +23,23 @@
     </div>
     <div id="articulo-container" class="container d-flex justify-content-center flex-column">
         <?php
-            if(!isset($_COOKIE['articulos'])){
-                echo 'Sin artículos para comprar aún';
-            }else{
-                $galletas = $_COOKIE['articulos'];
-                $idArticulo = explode(',',$galletas);
-                foreach ($idArticulo as $ar) {
-                    $sql = "SELECT * FROM items WHERE id_item='$ar'";
-                    $result = $conn->query($sql);
-                    if(!$result){
-                        echo 'Error '.$conn->error;
-                    }else{
-                        while($row = $result->fetch_assoc()){
-                            echo '<articulo articulo_precio="'.$row['precio_unidad'].'" articulo_nombre="'.$row['nombre_producto'].'" articulo_img="'.$row['img_url'].'"></articulo>';
-                        }
+            $session = $_COOKIE['PHPSESSID'];
+            $buscarCarritoSQL = "SELECT * FROM carritos WHERE `session_id`='$session'";
+
+            $result = $conn->query($buscarCarritoSQL);
+
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+
+                    $idItem = $row['id_item'];
+                    $buscarItemSQL = "SELECT * FROM items WHERE id_item='$idItem'";
+                    $itemResult = $conn->query($buscarItemSQL);
+                    
+                    while($itemRow = $itemResult->fetch_assoc()){
+                        echo '<articulo id_item="'.$itemRow['id_item'].'" articulo_precio="'.$itemRow['precio_unidad'].'" articulo_nombre="'.$itemRow['nombre_producto'].'" articulo_img="'.$itemRow['img_url'].'"></articulo>';
                     }
                 }
             }
-
         ?>
     </div>
     <hr>
