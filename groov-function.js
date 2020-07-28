@@ -51,7 +51,7 @@ Vue.component('item-box',{
             </div>
             <div class="item-name">{{ product_name }}</div>
             <div class="item-price">{{ product_price }}$</div>
-            <button v-on:click="item_id(product_id)">Agregar al carrito</button>
+            <div class="button"><button v-on:click="item_id(product_id)">Agregar al carrito</button></div>
         </div>
     </div>    
     `
