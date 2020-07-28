@@ -212,6 +212,7 @@ div.todo {
     background-color: black;
 }
 
-.opciones-user form{
-    width: 40vw;
+.form-area{
+    width: 45vw;
+    overflow: hidden;
 }

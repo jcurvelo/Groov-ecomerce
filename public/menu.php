@@ -26,8 +26,8 @@ $conn->query("UPDATE usuarios SET `session`='$saveSession' WHERE `id_user`='$idU
             echo '<topbar id_user="'.$_SESSION['id_user'].'" username="'.$_SESSION['username'].'" tipo_usuario="'.$_SESSION['tipo_usuario'].'"></topbar>'
         ?>
     </div>
-    <div id="menu" class="container d-flex justify-content-between">
-        <div class="opciones-user">
+    <div id="menu" class="container">
+        <div class="form-area opciones-user">
             <h2>Usuarios</h2>
             <form action="" name="menu_usuarios" method="POST">
                 <div class="form-group">
@@ -55,7 +55,7 @@ $conn->query("UPDATE usuarios SET `session`='$saveSession' WHERE `id_user`='$idU
                                 <input-menu nombre="Usuario" valor="'.$row['username'].'"></input-menu>
                                 <input-menu nombre="Tipo de Usuario" valor="'.$row['tipo_usuario'].'"></input-menu>
                                 <input type="submit" class="form-control btn btn-warning" name="modificar_usuario" value="Modificar">
-                                <button onclick="confirmDelete(this.form)" type="submit" class="form-control btn btn-danger" name="eliminar_usuario"></button>
+                                <button onclick="confirmDelete(this.form)" type="submit" class="form-control btn btn-danger" name="eliminar_usuario">Eliminar Usuario</button>
 
                                 ';
                             }
@@ -116,8 +116,92 @@ $conn->query("UPDATE usuarios SET `session`='$saveSession' WHERE `id_user`='$idU
                 ?>
             </form>
         </div>
-        <div class="opciones-item"> 
+        <div class="form-area opciones-item"> 
             <h2>Productos</h2>
+            <form action="" name="menu_productos" method="POST">
+                <div class="form-group">
+                    <label for="id_usuario">ID del Producto</label><br>
+                    <?php
+                        if(isset($_POST['id_item'])){
+                            echo '<input id="id_item" class="form-control" type="text" name="id_item" value="'.$_POST['id_item'].'" required>';
+                        }else{
+                            echo '<input id="id_item" class="form-control" type="text" name="id_item" value="" required>';
+                        }
+                    ?>
+                    <input class="form-control btn btn-primary" type="submit" name="buscar_producto" value="Buscar usuario">
+                </div>
+                <?php
+                    if(isset($_POST['buscar_producto'])){
+                        $id = $_POST['id_item'];
+                        $result = $conn->query("SELECT * FROM items WHERE id_item='$id'");
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()){
+                                echo '
+                                <input-menu nombre="Nombre" valor="'.$row['nombre_producto'].'"></input-menu>
+                                <input-menu nombre="Descripcion" valor="'.$row['desc_producto'].'"></input-menu>
+                                <input-menu nombre="Precio" valor="'.$row['precio_unidad'].'"></input-menu>
+                                <input-menu nombre="Stock" valor="'.$row['stock_cur'].'"></input-menu>
+                                <input-menu nombre="Imagen" valor="'.$row['img_url'].'"></input-menu>
+                                <img src="'.$row['img_url'].'" alt="'.$row['img_url'].'"></img>
+                                <input type="submit" class="form-control btn btn-warning" name="modificar_producto" value="Modificar">
+                                <button onclick="confirmDelete(this.form)" type="submit" class="form-control btn btn-danger" name="eliminar_producto">Elminar producto</button>
+
+                                ';
+                            }
+                        }else{
+                            echo '
+                                <input-menu nombre="Nombre" valor=""></input-menu>
+                                <input-menu nombre="Descripcion" valor=""></input-menu>
+                                <input-menu nombre="Precio" valor=""></input-menu>
+                                <input-menu nombre="Stock" valor=""></input-menu>
+                                <input-menu nombre="Imagen" valor=""></input-menu>
+                                <input type="submit" class="form-control btn btn-success" name="registar_producto" value="Registrar nuevo producto">
+                                ';
+                        }
+                    }
+                    if(isset($_POST['modificar_producto'])){
+                        $upProdId = $_POST['id_user'];
+                        $upProdNombre = $_POST['Nombre'];
+                        $upProdDesc = $_POST['Apellido'];
+                        $upProdPrecio = $_POST['Email'];
+                        $upProdStock = $_POST['Usuario'];
+                        $upProdImg = $_POST['Tipo'];
+                        $updateProdSQL = "UPDATE items SET nombre_producto='$upProdNombre', desc_producto='$upProdDesc', precio_unidad='$upProdPrecio', stock_cur='$upProdStock' img_url='$upProdImg'";
+                        
+                        $upProdResult = $conn->query($updateProdSQL);
+
+                        if($upProdResult){
+                            echo '<script>alert("Datos Actualizados")</script>';
+                        }else{
+                            echo 'Error '.$conn->error;
+                        }
+                    }
+
+                    if(isset($_POST['eliminar_producto'])){
+                        $delProdId = $_POST['id_user'];
+                        $delSQL = "DELETE FROM items WHERE id_user='$delProdId'";
+                        $conn->query($delSQL);
+
+                    }
+
+                    if(isset($_POST['registar_usuario'])){
+                        $newProdId = $_POST['id_user'];
+                        $newProdNombre = $_POST['Nombre'];
+                        $newProdDesc = $_POST['Apellido'];
+                        $newProdPrecio = $_POST['Email'];
+                        $newProdStock = $_POST['Usuario'];
+                        $newProdImg = $_POST['Tipo'];
+                        $newProdSQL = "INSERT INTO usuarios (id_item,nombre_producto,desc_producto,precio_unidad,stock_cur,img_url) 
+                        VALUES ('$newProdId','$newProdNombre','$newProdDesc','$newProdPrecio','$newProdStock','$newProdImg')";
+
+                        if(!$conn->query($newProdSQL)){
+                            echo 'Error '.$conn->error;
+                        } else{
+                            echo '<script>alert("Datos Registrados")</script>';
+                        }
+                    }
+                ?>
+            </form>
         </div>
     </div>
     <script src="groov-function.js"></script>
