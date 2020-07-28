@@ -48,7 +48,7 @@ Vue.component('item-box',{
     <div class="item-box mt-4">
         <div class="contenido">
             <div class="item-image">
-                <img :src="product_img" :alt="product_img">
+                <img :src="product_img" alt="product_img">
             </div>
             <div class="item-name">{{ product_name }}</div>
             <div class="item-price">{{ product_price }}$</div>
