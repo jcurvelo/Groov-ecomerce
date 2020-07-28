@@ -45,12 +45,14 @@ Vue.component('item-box',{
     },
     template: `
     <div class="item-box mt-4">
-        <div class="item-image">
-            <img :src="product_img" :alt="product_img">
+        <div class="contenido">
+            <div class="item-image">
+                <img :src="product_img" :alt="product_img">
+            </div>
+            <div class="item-name">{{ product_name }}</div>
+            <div class="item-price">{{ product_price }}$</div>
+            <button v-on:click="item_id(product_id)">Agregar al carrito</button>
         </div>
-        <div class="item-name">{{ product_name }}</div>
-        <div class="item-price">{{ product_price }}$</div>
-        <button v-on:click="item_id(product_id)">Agregar al carrito</button>
     </div>    
     `
 })
