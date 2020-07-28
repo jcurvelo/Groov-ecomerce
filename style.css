@@ -106,15 +106,15 @@
 }
 /* Fin del carrito */
 /*Botones de los items*/
-div.item-box div.button-texture, div.button{
+div.item-box div.button{
     height: 3vh;
     width: 30vh;
     visibility: hidden;
     display: inline-block;
 }
 
-div.item-box:hover div.button-texture{
-    visibility: visible;
+h1 {
+    text-align: center;
 }
 
 div.item-box:hover div.button{
@@ -202,7 +202,7 @@ footer{
 }
 
 .container{
-    margin-top: 10vh;
+    margin-top: 2vh;
     background-color: white;
 }
 
